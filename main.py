@@ -1,7 +1,16 @@
+# character_creation_module/main.py
+
 from random import randint
 
+# Новый импорт.
+# Из модуля start_game_banner, который расположен в папке graphic_arts,
+# импортируем функцию run_screensaver().
+from graphic_arts.start_game_banner import run_screensaver
 
-def attack(char_name, char_class):
+
+
+def attack(char_name: str, char_class: str) -> str:
+    """Attack calculeited."""
     if char_class == 'warrior':
         return (f'{char_name} нанёс противнику урон, равный '
                 f'{5 + randint(3, 5)}')
@@ -12,8 +21,8 @@ def attack(char_name, char_class):
         return (f'{char_name} нанёс противнику урон, равный '
                 f'{5 + randint(-3, -1)}')
 
-
-def defence(char_name, char_class):
+def defence(char_name: str, char_class: str) -> str:
+    """Defend calculeited."""
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} ед. урона')
     if char_class == 'mage':
@@ -22,7 +31,8 @@ def defence(char_name, char_class):
         return (f'{char_name} блокировал {10 + randint(2, 5)} ед. урона')
 
 
-def special(char_name, char_class):
+def special(char_name: str, char_class: str) -> str:
+    """Use special"""
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение '
                 f'«Выносливость {80 + 25}»')
@@ -31,8 +41,8 @@ def special(char_name, char_class):
     if char_class == 'healer':
         return (f'{char_name} применил специальное умение «Защита {10 + 30}»')
 
-
-def start_training(char_name, char_class):
+def start_training(char_name: str, char_class: str) -> str:
+    """Start training"""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — великий мастер ближнего боя.')
     if char_class == 'mage':
@@ -55,8 +65,8 @@ def start_training(char_name, char_class):
             print(special(char_name, char_class))
     return 'Тренировка окончена.'
 
-
-def choice_char_class():
+def choice_char_class() -> str:
+    """Choose class"""
     approve_choice = None
     char_class = None
     while approve_choice != 'y':
@@ -77,8 +87,9 @@ def choice_char_class():
                                'чтобы выбрать другого персонажа ').lower()
     return char_class
 
-
-def main():
+def main() -> None:
+    """Hellow"""
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name = input('...назови себя: ')
@@ -88,7 +99,5 @@ def main():
     print('Воитель, Маг, Лекарь')
     char_class = choice_char_class()
     print(start_training(char_name, char_class))
-
-
 
 main()
